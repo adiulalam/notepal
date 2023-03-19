@@ -1,0 +1,55 @@
+
+//Get All notes
+GET http://localhost:3000/notes HTTP/1.1
+
+###
+//Get notes by id
+GET http://localhost:3000/notes/1 HTTP/1.1
+
+###
+//Insert notes
+post http://localhost:3000/notes HTTP/1.1
+content-type: application/json
+
+{
+  "note_title": "test",
+  "note_description": "testr",
+  "is_archived": true,
+  "fk_user_id": 6
+}
+
+###
+//Update note
+PUT http://localhost:3000/notes/1 HTTP/1.1
+content-type: application/json
+
+{
+  "note_title": "John",
+  "note_description": "Doe",
+  "is_archived": false,
+  "fk_user_id": 6
+}
+
+###
+//Update note
+DELETE http://localhost:3000/notes/2 HTTP/1.1
+
+###
+//Get All archived notes
+GET http://localhost:3000/notes/isArchived HTTP/1.1
+
+###
+//Get All NOT archived notes
+GET http://localhost:3000/notes/isNotArchived HTTP/1.1
+
+###
+//Update note to archived by id
+PUT http://localhost:3000/notes/setArchived/1 HTTP/1.1
+
+###
+//Update note to NOT archived by id
+PUT http://localhost:3000/notes/setNotArchived/1 HTTP/1.1
+
+###
+//Get user by note id
+GET http://localhost:3000/notes/2/user HTTP/1.1
