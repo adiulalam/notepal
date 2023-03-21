@@ -1,9 +1,9 @@
 const express = require("express");
-const { checkNoteValidId } = require("../middleware/note.middleware");
+const { checkNoteValidId, checkNoteValidData } = require("../middleware/note.middleware");
 const router = express.Router();
 const notes = require("../controller/note.controller");
 
-router.route("/").get(notes.fetchAll).post(notes.createByID);
+router.route("/").get(notes.fetchAll).post(checkNoteValidData, notes.createByID);
 
 router.route("/setArchived/:id").put(checkNoteValidId, notes.updateByIDForArchive);
 
@@ -16,7 +16,7 @@ router.route("/isNotArchived").get(notes.fetchAllIsNotArchived);
 router
 	.route("/:id")
 	.get(checkNoteValidId, notes.fetchByID)
-	.put(checkNoteValidId, notes.updateByID)
+	.put(checkNoteValidId, checkNoteValidData, notes.updateByID)
 	.delete(checkNoteValidId, notes.deleteByID);
 
 router.route("/:id/user").get(checkNoteValidId, notes.fetchByIDAndFetchUser);

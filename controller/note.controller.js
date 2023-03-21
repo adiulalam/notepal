@@ -28,15 +28,6 @@ const fetchByID = (req, res) => {
 const createByID = (req, res) => {
 	const { note_title, note_description, is_archived, fk_user_id } = req.body;
 
-	if (
-		_.isNil(note_title) ||
-		_.isNil(note_description) ||
-		_.isNil(is_archived) ||
-		_.isNil(fk_user_id)
-	) {
-		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
-
 	connection.query(
 		"INSERT INTO note (note_title, note_description, is_archived, fk_user_id) VALUES (?, ?, ?, ?)",
 		[note_title, note_description, is_archived, fk_user_id],
@@ -51,15 +42,6 @@ const createByID = (req, res) => {
 const updateByID = (req, res) => {
 	const { id } = req.params;
 	const { note_title, note_description, is_archived, fk_user_id } = req.body;
-
-	if (
-		_.isNil(note_title) ||
-		_.isNil(note_description) ||
-		_.isNil(is_archived) ||
-		_.isNil(fk_user_id)
-	) {
-		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
 
 	connection.query(
 		"UPDATE note SET note_title=?, note_description=?, is_archived=?, fk_user_id=? where note_id=?",
