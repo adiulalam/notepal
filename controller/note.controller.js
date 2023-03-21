@@ -1,5 +1,4 @@
 const connection = require("../connection");
-const _ = require("lodash");
 
 //Get all notes
 const fetchAll = (req, res) => {
