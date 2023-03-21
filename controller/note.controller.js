@@ -13,17 +13,7 @@ const fetchAll = (req, res) => {
 };
 
 const fetchByID = (req, res) => {
-	// console.log(req.params);
 	const { id } = req.params;
-
-	if (_.isNil(id)) {
-		return res.status(400).send(JSON.stringify({ message: "ID missing" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
-	}
-
 	connection.query(
 		"select note_id, note_title, note_description, is_archived from note where note_id=?",
 		[id],
@@ -65,14 +55,10 @@ const updateByID = (req, res) => {
 	if (
 		_.isNil(note_title) ||
 		_.isNil(note_description) ||
-		_.isNil(is_archived, fk_user_id) ||
-		_.isNil(id)
+		_.isNil(is_archived) ||
+		_.isNil(fk_user_id)
 	) {
 		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
 	}
 
 	connection.query(
@@ -87,16 +73,7 @@ const updateByID = (req, res) => {
 
 //delete note by id
 const deleteByID = (req, res) => {
-	// console.log(req.body);
 	const { id } = req.params;
-
-	if (_.isNil(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
-	}
 
 	connection.query("DELETE FROM note WHERE note_id=?", [id], function (error, results) {
 		if (error) throw error;
@@ -107,15 +84,6 @@ const deleteByID = (req, res) => {
 //update note by id for archive
 const updateByIDForArchive = (req, res) => {
 	const { id } = req.params;
-
-	if (_.isNil(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
-	}
-
 	connection.query(
 		"UPDATE note SET is_archived=true where note_id=?",
 		[id],
@@ -129,15 +97,6 @@ const updateByIDForArchive = (req, res) => {
 //update note by id for archive
 const updateByIDForNotArchive = (req, res) => {
 	const { id } = req.params;
-
-	if (_.isNil(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Missing Field" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
-	}
-
 	connection.query(
 		"UPDATE note SET is_archived=false where note_id=?",
 		[id],
@@ -171,17 +130,7 @@ const fetchAllIsNotArchived = (req, res) => {
 
 //Get user from note id
 const fetchByIDAndFetchUser = (req, res) => {
-	// console.log(req.params);
 	const { id } = req.params;
-
-	if (_.isNil(id)) {
-		return res.status(400).send(JSON.stringify({ message: "ID missing" }));
-	}
-
-	if (isNaN(id)) {
-		return res.status(400).send(JSON.stringify({ message: "Invalid ID" }));
-	}
-
 	connection.query(
 		"SELECT user_id, first_name, last_name, email FROM note INNER JOIN user ON user.user_id = note.fk_user_id where note_id=?",
 		[id],

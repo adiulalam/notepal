@@ -4,7 +4,7 @@ GET http://localhost:3000/notes HTTP/1.1
 
 ###
 //Get notes by id
-GET http://localhost:3000/notes/1 HTTP/1.1
+GET http://localhost:3000/notes/gg HTTP/1.1
 
 ###
 //Insert notes
@@ -20,7 +20,7 @@ content-type: application/json
 
 ###
 //Update note
-PUT http://localhost:3000/notes/1 HTTP/1.1
+PUT http://localhost:3000/notes/12 HTTP/1.1
 content-type: application/json
 
 {
@@ -31,7 +31,7 @@ content-type: application/json
 }
 
 ###
-//Update note
+//delete note
 DELETE http://localhost:3000/notes/2 HTTP/1.1
 
 ###
@@ -44,7 +44,7 @@ GET http://localhost:3000/notes/isNotArchived HTTP/1.1
 
 ###
 //Update note to archived by id
-PUT http://localhost:3000/notes/setArchived/1 HTTP/1.1
+PUT http://localhost:3000/notes/setArchived/2 HTTP/1.1
 
 ###
 //Update note to NOT archived by id
