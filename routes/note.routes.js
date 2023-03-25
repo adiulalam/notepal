@@ -11,9 +11,9 @@ router.route("/setArchived/:id").put(checkValidId, notes.updateByIDForArchive);
 
 router.route("/setNotArchived/:id").put(checkValidId, notes.updateByIDForNotArchive);
 
-router.route("/isArchived").get(notes.fetchAllIsArchived);
+router.route("/isArchived").get(checkIsAdminJWT, notes.fetchAllIsArchived);
 
-router.route("/isNotArchived").get(notes.fetchAllIsNotArchived);
+router.route("/isNotArchived").get(checkIsAdminJWT, notes.fetchAllIsNotArchived);
 
 router
 	.route("/:id")

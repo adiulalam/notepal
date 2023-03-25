@@ -1,9 +1,13 @@
 const express = require("express");
-const { checkValidId, checkUserValidData } = require("../middleware/user.middleware");
+const {
+	checkValidId,
+	checkUserValidData,
+	checkIsAdminJWT,
+} = require("../middleware/user.middleware");
 const users = require("./../controller/user.controller");
 const router = express.Router();
 
-router.route("/").get(users.fetchAll).post(checkUserValidData, users.createByID);
+router.route("/").get(checkIsAdminJWT, users.fetchAll).post(checkUserValidData, users.createByID);
 
 router
 	.route("/:id")
