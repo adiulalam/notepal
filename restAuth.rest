@@ -1,0 +1,10 @@
+
+###
+//login users
+post http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "adiulalam@gmail.com",
+  "password": "password124"
+}

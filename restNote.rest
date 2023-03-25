@@ -1,7 +1,7 @@
 
 //Get All notes
 GET http://localhost:3000/notes HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2Nzk4MDM4NDEsImFkbWluIjpmYWxzZX0.3aZ0gzv-86TTx0K9-MrU2Uo9xD7dF7tTAI-GbTIA7pA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImVtYWlsIjoiYWRpdWxhbGFtQGdtYWlsLmNvbSIsImFkbWluIjoxLCJpYXQiOjE2Nzk3MTc1NzQsImV4cCI6MTY3OTgwMzk3NH0.Srn6PQPU3V94gSM7jqSUPGXpHtEDPG3oBgSEI8eOC3s
 
 ###
 //Get notes by id

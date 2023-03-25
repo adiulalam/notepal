@@ -21,7 +21,7 @@ const checkUserValidData = (req, res, next) => {
 };
 
 const checkIsAdminJWT = (req, res, next) => {
-	if (!req.auth.admin) {
+	if (!req.auth.is_admin) {
 		return res.sendStatus(401).send(JSON.stringify({ message: "Unauthorized user" }));
 	} else {
 		next();

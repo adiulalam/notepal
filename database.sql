@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS notes.user(
 	user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	first_name text NOT NULL,
 	last_name text NOT NULL,
-	email text NOT NULL UNIQUE,
+	email varchar(255) NOT NULL UNIQUE,
+	is_admin boolean DEFAULT false,
 	password text NOT NULL
 );
 

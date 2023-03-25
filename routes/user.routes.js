@@ -7,7 +7,7 @@ const {
 const users = require("./../controller/user.controller");
 const router = express.Router();
 
-router.route("/").get(checkIsAdminJWT, users.fetchAll).post(checkUserValidData, users.createByID);
+router.route("/").get(checkIsAdminJWT, users.fetchAll).post(checkUserValidData, users.createUser);
 
 router
 	.route("/:id")

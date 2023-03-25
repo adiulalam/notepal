@@ -26,7 +26,7 @@ const fetchByID = (req, res) => {
 };
 
 //Create new user
-const createByID = (req, res) => {
+const createUser = (req, res) => {
 	const { first_name, last_name, email } = req.body;
 	let { password } = req.body;
 	password = CryptoJS.SHA256(password, process.env.PASSWORD_HASH_SALT).toString();
@@ -82,7 +82,7 @@ const fetchByIDAndFetchNotes = (req, res) => {
 module.exports = {
 	fetchAll,
 	fetchByID,
-	createByID,
+	createUser,
 	updateByID,
 	deleteByID,
 	fetchByIDAndFetchNotes,
