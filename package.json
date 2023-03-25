@@ -10,14 +10,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/rw-interviews/Adiul-Alam-Adil.git"
+		"url": "git+https://github.com/adiulalam/notepal-backend.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/rw-interviews/Adiul-Alam-Adil/issues"
+		"url": "https://github.com/adiulalam/notepal-backend/issues"
 	},
-	"homepage": "https://github.com/rw-interviews/Adiul-Alam-Adil#readme",
+	"homepage": "https://github.com/adiulalam/notepal-backend#readme",
 	"dependencies": {
 		"body-parser": "^1.20.2",
 		"cors": "^2.8.5",
