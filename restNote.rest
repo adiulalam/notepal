@@ -1,7 +1,7 @@
 
 //Get All notes
 GET http://localhost:3000/notes HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJhZG1pbiI6ZmFsc2V9.4Btuk40-8ipbC62SlKPe-HehsZTy3_9lnNa4Xe2mGvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2Nzk4MDM4NDEsImFkbWluIjpmYWxzZX0.3aZ0gzv-86TTx0K9-MrU2Uo9xD7dF7tTAI-GbTIA7pA
 
 ###
 //Get notes by id
@@ -11,6 +11,7 @@ GET http://localhost:3000/notes/gg HTTP/1.1
 //Insert notes
 post http://localhost:3000/notes HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2Nzk4MDM4NDEsImFkbWluIjpmYWxzZX0.3aZ0gzv-86TTx0K9-MrU2Uo9xD7dF7tTAI-GbTIA7pA
 
 {
   "note_title": "test",

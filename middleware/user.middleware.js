@@ -1,5 +1,14 @@
 const _ = require("lodash");
-const { checkNoteValidId: checkUserValidId } = require("./note.middleware");
+
+const checkValidId = (req, res, next) => {
+	const { id } = req.params;
+
+	if (_.isNil(id) || isNaN(id)) {
+		return res.status(400).send(JSON.stringify({ message: "ID missing / Invalid ID" }));
+	} else {
+		next();
+	}
+};
 
 const checkUserValidData = (req, res, next) => {
 	const { first_name, last_name, email, password } = req.body;
@@ -11,4 +20,12 @@ const checkUserValidData = (req, res, next) => {
 	}
 };
 
-module.exports = { checkUserValidId, checkUserValidData };
+const checkIsAdminJWT = (req, res, next) => {
+	if (!req.auth.admin) {
+		return res.sendStatus(401).send(JSON.stringify({ message: "Unauthorized user" }));
+	} else {
+		next();
+	}
+};
+
+module.exports = { checkValidId, checkUserValidData, checkIsAdminJWT };
