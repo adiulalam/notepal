@@ -10,6 +10,16 @@ const checkValidId = (req, res, next) => {
 	}
 };
 
+const checkUserIdMatchesOrIsAdmin = (req, res, next) => {
+	const { id } = req.params;
+
+	if (parseInt(id) === req.auth.id || req.auth.is_admin) {
+		next();
+	} else {
+		return res.status(400).send(JSON.stringify({ message: "ID Verification Failed" }));
+	}
+};
+
 const checkUserValidData = (req, res, next) => {
 	const { first_name, last_name, email, password } = req.body;
 
@@ -28,4 +38,4 @@ const checkIsAdminJWT = (req, res, next) => {
 	}
 };
 
-module.exports = { checkValidId, checkUserValidData, checkIsAdminJWT };
+module.exports = { checkValidId, checkUserValidData, checkIsAdminJWT, checkUserIdMatchesOrIsAdmin };
