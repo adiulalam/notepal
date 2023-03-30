@@ -5,7 +5,7 @@ const router = express.Router();
 const notes = require("../controller/note.controller");
 const _ = require("lodash");
 
-router.route("/").get(checkIsAdminJWT, notes.fetchAll).post(checkNoteValidData, notes.createByID);
+router.route("/").get(checkIsAdminJWT, notes.fetchAll).post(checkNoteValidData, notes.createNote);
 
 router.route("/setArchived/:id").put(checkValidId, notes.updateByIDForArchive);
 

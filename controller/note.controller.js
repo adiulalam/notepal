@@ -24,7 +24,7 @@ const fetchByID = (req, res) => {
 };
 
 //Create new note
-const createByID = (req, res) => {
+const createNote = (req, res) => {
 	const { note_title, note_description, is_archived, fk_user_id } = req.body;
 
 	connection.query(
@@ -125,7 +125,7 @@ const fetchByIDAndFetchUser = (req, res) => {
 module.exports = {
 	fetchAll,
 	fetchByID,
-	createByID,
+	createNote,
 	updateByID,
 	deleteByID,
 	updateByIDForArchive,
