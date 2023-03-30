@@ -5,6 +5,18 @@ post http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "adiulalam@gmail.com",
+  "email": "adiulalam+0004@gmail.com",
+  "password": "password124"
+}
+
+###
+//register
+post http://localhost:3000/auth/register HTTP/1.1
+content-type: application/json
+
+{
+  "first_name": "adiul",
+  "last_name": "alam",
+  "email": "adiulalam+0003@gmail.com",
   "password": "password124"
 }

@@ -26,6 +26,22 @@ const login = (req, res) => {
 	);
 };
 
+const register = (req, res) => {
+	const { first_name, last_name, email } = req.body;
+	let { password } = req.body;
+	password = CryptoJS.SHA256(password, process.env.PASSWORD_HASH_SALT).toString();
+
+	connection.query(
+		"INSERT INTO user (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
+		[first_name, last_name, email, password],
+		function (error, results) {
+			if (error) throw error;
+			res.end(JSON.stringify(results));
+		}
+	);
+};
+
 module.exports = {
 	login,
+	register,
 };

@@ -13,6 +13,25 @@ const checkValidLoginData = (req, res, next) => {
 	}
 };
 
+const checkUniqueEmail = (req, res, next) => {
+	const { email } = req.body;
+
+	connection.query(
+		"select count(*) as count from user where email=?",
+		[email],
+		function (error, results) {
+			if (error) throw error;
+			const count = _.get(results, "0.count", 0) || 0;
+
+			if (count > 0) {
+				return res.status(400).send(JSON.stringify({ message: "Email already exists" }));
+			} else {
+				return next();
+			}
+		}
+	);
+};
+
 const createJWT = (email, password) => {
 	return new Promise((resolve, reject) => {
 		connection.query(
@@ -46,4 +65,5 @@ const createJWT = (email, password) => {
 module.exports = {
 	checkValidLoginData,
 	createJWT,
+	checkUniqueEmail,
 };
