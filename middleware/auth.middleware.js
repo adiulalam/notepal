@@ -21,7 +21,8 @@ const checkValidDataLength = (req, res, next) => {
 		last_name.length <= 1 ||
 		email.length <= 4 ||
 		password.length <= 8 ||
-		password.search(/[a-z]/i) < 0 ||
+		password.search(/[a-z]/) < 0 ||
+		password.search(/[A-Z]/) < 0 ||
 		password.search(/[0-9]/) < 0
 	) {
 		return res
