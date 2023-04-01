@@ -13,6 +13,25 @@ const checkValidLoginData = (req, res, next) => {
 	}
 };
 
+const checkValidDataLength = (req, res, next) => {
+	const { first_name, last_name, email, password } = req.body;
+
+	if (
+		first_name.length <= 1 ||
+		last_name.length <= 1 ||
+		email.length <= 4 ||
+		password.length <= 8 ||
+		password.search(/[a-z]/i) < 0 ||
+		password.search(/[0-9]/) < 0
+	) {
+		return res
+			.status(400)
+			.send(JSON.stringify({ message: "Invaild field length or invalid password" }));
+	} else {
+		next();
+	}
+};
+
 const checkUniqueEmail = (req, res, next) => {
 	const { email } = req.body;
 
@@ -66,4 +85,5 @@ module.exports = {
 	checkValidLoginData,
 	createJWT,
 	checkUniqueEmail,
+	checkValidDataLength,
 };
