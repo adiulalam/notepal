@@ -3,7 +3,7 @@ const connection = require("../connection");
 //Get all notes
 const fetchAll = (req, res) => {
 	connection.query(
-		"select note_id, note_title, note_description, is_archived from note",
+		"select note_id, note_title, note_description, is_archived, fk_user_id from note",
 		function (error, results) {
 			if (error) throw error;
 			res.end(JSON.stringify(results));
@@ -15,7 +15,7 @@ const fetchByID = (req, res) => {
 	const { id } = req.params;
 	const { id: JwtID, is_admin } = req.auth;
 
-	let select = "select note_id, note_title, note_description, is_archived";
+	let select = "select note_id, note_title, note_description, is_archived, fk_user_id";
 	let from = "from note";
 	let where = "where note_id=?";
 	const queryVar = [parseInt(id)];
@@ -158,14 +158,23 @@ const fetchAllIsNotArchived = (req, res) => {
 //Get user from note id
 const fetchByIDAndFetchUser = (req, res) => {
 	const { id } = req.params;
-	connection.query(
-		"SELECT user_id, first_name, last_name, email FROM note INNER JOIN user ON user.user_id = note.fk_user_id where note_id=?",
-		[id],
-		function (error, results) {
-			if (error) throw error;
-			res.end(JSON.stringify(results));
-		}
-	);
+	const { id: fk_user_id, is_admin } = req.auth;
+
+	let select = "SELECT user_id, first_name, last_name, email";
+	let from = "FROM note INNER JOIN user ON user.user_id = note.fk_user_id";
+	let where = "where note_id=?";
+	const queryVar = [parseInt(id)];
+
+	if (!is_admin) {
+		where += " AND fk_user_id=? ";
+		queryVar.push(fk_user_id);
+	}
+
+	const query = `${select} ${from} ${where}`;
+	connection.query(query, queryVar, function (error, results) {
+		if (error) throw error;
+		res.end(JSON.stringify(results));
+	});
 };
 
 module.exports = {

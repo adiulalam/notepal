@@ -59,3 +59,4 @@ PUT http://localhost:3000/notes/setNotArchived/1 HTTP/1.1
 ###
 //Get user by note id
 GET http://localhost:3000/notes/2/user HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY4MDMxMDE5MiwiZXhwIjoxNjgwMzk2NTkyfQ.zqN1WycH1KN0oqz8Lb-hVPpRK9aumJfcL21FAyF5kHE
