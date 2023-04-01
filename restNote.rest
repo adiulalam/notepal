@@ -5,13 +5,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 ###
 //Get notes by id
-GET http://localhost:3000/notes/gg HTTP/1.1
+GET http://localhost:3000/notes/20 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY4MDMxMDE5MiwiZXhwIjoxNjgwMzk2NTkyfQ.zqN1WycH1KN0oqz8Lb-hVPpRK9aumJfcL21FAyF5kHE
 
 ###
 //Insert notes
 post http://localhost:3000/notes HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2Nzk4MDM4NDEsImFkbWluIjpmYWxzZX0.3aZ0gzv-86TTx0K9-MrU2Uo9xD7dF7tTAI-GbTIA7pA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2ODAzMTAxOTIsImV4cCI6MTY4MDM5NjU5Mn0.iMq8dmyv9N0g4oVCwfBM2vPoq7eEvJX4ENiFSabzkEU
 
 {
   "note_title": "test",
@@ -22,23 +23,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 ###
 //Update note
-PUT http://localhost:3000/notes/12 HTTP/1.1
+PUT http://localhost:3000/notes/21 HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2ODAzMTAxOTIsImV4cCI6MTY4MDM5NjU5Mn0.iMq8dmyv9N0g4oVCwfBM2vPoq7eEvJX4ENiFSabzkEU
 
 {
   "note_title": "John",
   "note_description": "Doe",
-  "is_archived": false,
-  "fk_user_id": 6
+  "is_archived": false
 }
 
 ###
 //delete note
-DELETE http://localhost:3000/notes/2 HTTP/1.1
+DELETE http://localhost:3000/notes/22 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2ODAzMTAxOTIsImV4cCI6MTY4MDM5NjU5Mn0.iMq8dmyv9N0g4oVCwfBM2vPoq7eEvJX4ENiFSabzkEU
 
 ###
 //Get All archived notes
 GET http://localhost:3000/notes/isArchived HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2ODAzMTAxOTIsImV4cCI6MTY4MDM5NjU5Mn0.iMq8dmyv9N0g4oVCwfBM2vPoq7eEvJX4ENiFSabzkEU
 
 ###
 //Get All NOT archived notes
@@ -46,7 +49,8 @@ GET http://localhost:3000/notes/isNotArchived HTTP/1.1
 
 ###
 //Update note to archived by id
-PUT http://localhost:3000/notes/setArchived/2 HTTP/1.1
+PUT http://localhost:3000/notes/setArchived/21 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoiYWRpdWxhbGFtKzAwMDNAZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY4MDMxMDE5MiwiZXhwIjoxNjgwMzk2NTkyfQ.zqN1WycH1KN0oqz8Lb-hVPpRK9aumJfcL21FAyF5kHE
 
 ###
 //Update note to NOT archived by id
