@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../app");
 
-//todo rewrite tests for login and registration
+//todo rewrite tests for login and registration 
 describe("Test the root path of user", () => {
 	test("It should response the GET method from user path", async () => {
 		const response = await request(app).get("/users");
