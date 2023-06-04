@@ -56,11 +56,16 @@ In some instances, a body is required such when creating or updating an user or 
 }
 ```
 
+### Auth Endpoint
+| Endpoint | Method | Description |
+| ----------- | ----------- | ----------- | 
+| /register | POST | This creates a new user on the database. Body is REQUIRED. | 
+| /login | POST | This verifies user is registered. Body is REQUIRED. | 
+
 ### Users Endpoint
 | Endpoint | Method | Description |
 | ----------- | ----------- | ----------- | 
 | /users | GET | This fetches all the users from the database | 
-| /users | POST | This creates a new user on the database. Body is REQUIRED. | 
 | /users/:id | GET | This fetches a user by id from the database |
 | /users/:id | PUT | This updates a user by id on the database. Body is REQUIRED. |
 | /users/:id | DELETE | This deletes a user by id on the database |
